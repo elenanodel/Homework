@@ -34,18 +34,7 @@ namespace Homework_2
                 {
                     case '1':
                         {
-                            Console.Write("Enter surname of student: ");
-                            student.surname = Console.ReadLine();
-
-                            Console.Write("Enter year of birth of student: ");
-                            student.birth = int.Parse(Console.ReadLine());
-
-                            Console.Write("Enter group of student: ");
-                            student.group = int.Parse(Console.ReadLine());
-
-                            Console.Write("Enter faculty of student: ");
-                            student.faculty = Console.ReadLine();
-
+                            InputStudent();
                             methods.AddStudent(student);
                             break;
                         }
@@ -54,10 +43,7 @@ namespace Homework_2
                             studentList = methods.StudentsList();
                             foreach (Student stud in studentList)
                             {
-                                Console.WriteLine("Surname: " + student.surname);
-                                Console.WriteLine("Year of birth: " + student.birth);
-                                Console.WriteLine("Group: " + student.group);
-                                Console.WriteLine("Faculty:" + student.faculty);
+                                OutputStudent(student);
                                 Console.WriteLine("--------------------------------------------");
                             }
                             break;
@@ -69,7 +55,7 @@ namespace Homework_2
                 }
             } while (a != '8');
         }
-        static Student EnterDataStudent()
+        static Student InputStudent()
         {
             Student student = new Student();
 

@@ -8,7 +8,7 @@ namespace Homework_2
 {
     public class Methods
     {
-        public List<Student> _students = new List<Student>();
+        public List<Student> _students = new List<Student>();     
 
         public bool AddStudent(Student student)
         {

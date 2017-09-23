@@ -59,7 +59,7 @@ namespace Homework_2_another_way
                         }
                     default:
                         {
-                            Console.WriteLine("\n\tYou entered wrong symbol!");
+                            Console.WriteLine("Wrong value! Try again...");
                             break;
                         }
                 }
@@ -151,6 +151,11 @@ namespace Homework_2_another_way
                         }
                     case '9':
                         {
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Wrong value! Try again...");
                             break;
                         }
                 }
@@ -297,15 +302,16 @@ namespace Homework_2_another_way
                 Console.WriteLine("Group: {0}. Student: {1}. Year of birth: {2}. Faculty: {3}.", stud.group, stud.surname, stud.birth, stud.faculty);
             }
         }
+       
     }
 
     public class FileWork
     {     
-        private const string fileName = "StudentList.txt";
-        public void WriteToFile(List<Student> studentsList)
+        private const string fileName = "StudentsList.txt";
+        public void WriteToFile(List<Student> students)
         {
             StreamWriter sw = new StreamWriter(fileName, true);            
-            foreach (Student stud in studentsList)
+            foreach (Student stud in students)
             {
                 sw.WriteLine(stud.surname + "\t" 
                     + stud.birth + "\t" 

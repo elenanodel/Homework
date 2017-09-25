@@ -46,8 +46,7 @@ namespace Homework_2_another_way
 
                             methods.AddStudent(student);
 
-                            Console.WriteLine("\nStudent was created!");
-                            student.ShowInfo();
+                            Console.WriteLine("\nStudent was created!");                            
                             Console.WriteLine("--------------------------------------------");
 
                             break;
@@ -146,7 +145,8 @@ namespace Homework_2_another_way
 
                     case '8':
                         {
-
+                            fw.ReadFromFile();
+                            Console.WriteLine("File was read!");
                             break;
                         }
                     case '9':
@@ -209,9 +209,12 @@ namespace Homework_2_another_way
             set { _faculty = value; }
         }
 
-        public void ShowInfo()
+        public string getInformation()
         {
-            Console.WriteLine("Surname: {0}. Year of birth: {1}. Group: {2}. Faculty: {3}.", surname, birth, group, faculty);
+            return "Surname: " + surname
+                  + ", year of birth: " + birth
+                  + ", group " + group
+                  + ", faculty: " + faculty;                 
         }
     }
 
@@ -324,10 +327,29 @@ namespace Homework_2_another_way
         public List<Student> ReadFromFile()
         {
             List<Student> result = new List<Student>();
-            
 
+            string[] fromFile = File.ReadAllLines(fileName);
 
+            foreach (string s in fromFile)
+            {
+                string[] items = s.Split('\t');
+                result.Add(getStudents(items));
+            }            
             return result;
+        }
+
+        private Student getStudents (string[] items)
+        {
+           Student student = new Student();
+
+            student.surname = items[0];
+            student.birth = int.Parse(items[1]);
+            student.group = int.Parse(items[2]);
+            student.faculty = items[3];
+
+            Console.WriteLine(student.getInformation());
+
+            return student;
         }
     }
 }
